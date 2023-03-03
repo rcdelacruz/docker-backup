@@ -1,6 +1,6 @@
 # Vackup: Backup and Restore Docker Volumes
 
-[![Lint Code Base](https://github.com/BretFisher/docker-vackup/actions/workflows/linter.yml/badge.svg)](https://github.com/BretFisher/docker-vackup/actions/workflows/linter.yml)
+[![Lint Code Base](https://github.com/rcdelacruz/docker-backup/actions/workflows/linter.yml/badge.svg)](https://github.com/rcdelacruz/docker-backup/actions/workflows/linter.yml)
 
 **This is now an [Official Docker Desktop Extension called "Volumes Backup & Share"](https://hub.docker.com/extensions/docker/volumes-backup-extension) which has more features, but I'll keep this repo around for historial purposes.**
 
@@ -23,25 +23,25 @@ For when you want to use image registries as a way to push/pull volume data.
 
 Usage:
 
-`vackup export VOLUME FILE`
+`backup export VOLUME FILE`
   Creates a gzip'ed tarball in current directory from a volume
 
-`vackup import FILE VOLUME`
+`backup import FILE VOLUME`
   Extracts a gzip'ed tarball into a volume
 
-`vackup save VOLUME IMAGE`
+`backup save VOLUME IMAGE`
   Copies the volume contents to a busybox image in the /volume-data directory
 
-`vackup load IMAGE VOLUME`
+`backup load IMAGE VOLUME`
   Copies /volume-data contents from an image to a volume
 
 ## Install
 
-Download the `vackup` file in this repository to your local machine in your shell path and make it executable.
+Download the `backup` file in this repository to your local machine in your shell path and make it executable.
 
 ```shell
-curl -sSL https://raw.githubusercontent.com/BretFisher/docker-vackup/main/vackup > /usr/local/bin/vackup
-chmod +x /usr/local/bin/vackup
+curl -sSL https://raw.githubusercontent.com/rcdelacruz/docker-backup/main/backup > /usr/local/bin/backup
+chmod +x /usr/local/bin/backup
 ```
 
 ## Error conditions
@@ -51,13 +51,13 @@ environment variable is set.  If so it will run it and pass the line number the 
 happened on and the exit code from the failed command.  Eg,
 
 ```shell
-# /opt/bin/vackup-failed.sh
+# /opt/bin/backup-failed.sh
 LINE_NUMBER=$1
 EXIT_CODE=$2
 send_slack_webhook "Vackup failed on line number ${LINE_NUMBER} with exit code ${EXIT_CODE}!"
 ```
 
 ```shell
-export VACKUP_FAILURE_SCRIPT=/opt/bin/vackup-failed.sh
-./vackup export ......
+export VACKUP_FAILURE_SCRIPT=/opt/bin/backup-failed.sh
+./backup export ......
 ```
