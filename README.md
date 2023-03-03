@@ -1,4 +1,4 @@
-# Vackup: Backup and Restore Docker Volumes
+# Backup: Backup and Restore Docker Volumes
 
 [![Lint Code Base](https://github.com/rcdelacruz/docker-backup/actions/workflows/linter.yml/badge.svg)](https://github.com/rcdelacruz/docker-backup/actions/workflows/linter.yml)
 
